@@ -1,16 +1,11 @@
 
-
-
-
-
-
-/* .logo {
+ .logo {
   border-radius: 50%;
 }
 
 
 header {
-  background-color: purple;
+  background-color: rgb(203, 67, 233);
   display: flex;
 }
 
@@ -28,15 +23,14 @@ body, html {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.home.jpg {
+.hero-image {
   background-image: url("home.jpg");
-  height: 50%;
+  height: 70vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
 }
-
 #mainpic { 
   width: 300px;
-} */
+} 

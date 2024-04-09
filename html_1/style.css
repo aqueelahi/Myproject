@@ -3,9 +3,12 @@
   border-radius: 50%;
 }
 
+h1 {
+  padding: 25px
+}
 
 header {
-  background-color: rgb(203, 67, 233);
+  background-color: rgb(208, 81, 236);
   display: flex;
 }
 

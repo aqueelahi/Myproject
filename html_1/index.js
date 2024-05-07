@@ -1,5 +1,5 @@
 console.log ("Hello world!")
-alert ("Hello")
+// alert ("Hello")
 
 const hairDescButton = document.getElementById("hairDescButton");
 const hairDescSelect = document.getElementById("hairdesc");

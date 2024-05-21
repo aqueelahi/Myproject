@@ -45,7 +45,6 @@ h1 {
   width: 500px;
   height: 500px;
 } */
-<<<<<<< HEAD
 
 
 .mainpicture {
@@ -119,14 +118,3 @@ h1 {
     color: white;
     text-align: center;
   }
-=======
-.image {
-  height: 750px;
-  display: flex;
-  justify-content: center;
- 
-}
-
-
-
->>>>>>> cc61ad8 ( work on css)

@@ -1,42 +1,32 @@
-<<<<<<< HEAD
-=======
-console.log ("Hello world!")
-alert ("Hello")
->>>>>>> cc61ad8 ( work on css)
+let hairLength = 15; // Length of hair in centimeters
+let isHairClean = true; // Boolean indicating if hair is clean
 
-const hairDescButton = document.getElementById("hairDescButton");
-const hairDescSelect = document.getElementById("hairdesc");
+// Integrate distinct data types
+let hairColor = "brown"; // String representing hair color
+let numHaircuts = 3; // Number of haircuts
 
-hairDescButton.addEventListener("click",function () {
-    const hairDesc = hairDescSelect.value;
-    const resourcehtml = "coilyhaircare.html";
-    window.location.href= coilyhaircare.html
-<<<<<<< HEAD
-});
+// Implement Mathematical Operations
+let hairGrowthRate = 0.5; // Hair growth rate in centimeters per month
+let totalHairLength = hairLength + (hairGrowthRate * numHaircuts); // Calculating total hair length after haircuts
 
-const hairDescButton = document.getElementById("hairDescButton");
-const hairDescSelect = document.getElementById("hairdesc");
+// Create decision making with decision structures
+if (isHairClean) {
+  console.log("Your hair is clean!");
+} else {
+  console.log("Your hair is dirty. Please wash it.");
+}
 
-hairDescButton.addEventListener("click",function () {
-    const hairDesc = hairDescSelect.value;
-    const resourcehtml = "coilyhaircare.html";
-    window.location.href= coilyhaircare.html
-});
+// Utilize Logical Operators for Complex Condition Evaluation
+let isLongHair = (totalHairLength > 20); // Checking if hair length is greater than 20 centimeters
+let isBrownHair = (hairColor === "brown"); // Checking if hair color is brown
 
-const slidesContainer = document.getElementById("slides-container");
-const slide = document.querySelector(".slide");
-const prevButton = document.getElementById("slide-arrow-prev");
-const nextButton = document.getElementById("slide-arrow-next");
+if (isLongHair && isBrownHair) {
+  console.log("You have long brown hair!");
+} else {
+  console.log("Your hair is either not long enough or not brown.");
+}
 
-nextButton.addEventListener("click", () => {
-  const slideWidth = slide.clientWidth;
-  slidesContainer.scrollLeft += slideWidth;
-});
-
-prevButton.addEventListener("click", () => {
-  const slideWidth = slide.clientWidth;
-  slidesContainer.scrollLeft -= slideWidth;
-});
-=======
-});
->>>>>>> cc61ad8 ( work on css)
+// Showcase JavaScript Output Techniques
+let outputElement = document.createElement('p');
+outputElement.textContent = `Total hair length after ${numHaircuts} haircuts: ${totalHairLength} cm`;
+document.body.appendChild(outputElement);

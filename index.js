@@ -27,6 +27,6 @@ if (isLongHair && isBrownHair) {
 }
 
 // Showcase JavaScript Output Techniques
-let outputElement = document.createElement('p');
-outputElement.textContent = `Total hair length after ${numHaircuts} haircuts: ${totalHairLength} cm`;
-document.body.appendChild(outputElement);
+// let outputElement = document.createElement('p');
+// outputElement.textContent = `Total hair length after ${numHaircuts} haircuts: ${totalHairLength} cm`;
+// document.body.appendChild(outputElement);

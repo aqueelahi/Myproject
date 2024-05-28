@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Natural Haven</title>
+  <link href="index.css" rel="stylesheet" type="text/css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+</head>
+  
+<body>
+    <header>
+        <div class="navbar">
+          <div class="logo">
+            <img src="logo.jpg" alt="Girl with locs" class="logopic">
+            <h1>Natural Haven &reg;</h1>
+          </div>
+          <nav>
+            <ul class="menu">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li class="dropdown">
+                <a href="resources.html" class="dropbtn">Resources</a>
+                <div class="dropdown-content">
+                  <a href="award.html">Award</a>
+                </div>
+              </li>
+              <li class="dropdown2">
+                <a href="us.html" class="dropbtn2">About Us</a>
+                <div class="dropdown-content2">
+                  <a href="donation.html">Donate</a>
+                </div>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Support Natural Haven</h2>
+                <p>Your generous donation helps us provide the best hair care resources and support for our community. Together, we can make a difference.</p>
+            </div>
+        </section>
+
+        <section class="donation-form-section">
+            <h3>Make a Donation</h3>
+            <form action="https://cash.app/$irsh1" method="post" class="donation-form">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="amount">Donation Amount</label>
+                    <input type="number" id="amount" name="amount" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message (optional)</label>
+                    <textarea id="message" name="message"></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="donate-button">Donate Now</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="impact-section">
+            <h3>Your Impact</h3>
+            <p>With your support, we have been able to:</p>
+            <ul>
+                <li>Provide free hair care workshops to over 1,000 individuals.</li>
+                <li>Distribute hair care products to communities in need.</li>
+                <li>Support research in natural hair care.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-links">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="award.html">Award</a></li>
+                <li><a href="aboutus.html">About Us</a></li> 
+                <li><a href="donation.html">Donate</a></li>
+            </ul>
+        </div>
+        <div class="footer-social">
+            <ul>
+                <li><a href="https://www.instagram.com/yourprofile"><i class="none">Instagram</i></a></li>
+            </ul>
+        </div>
+        <div class="footer-info">
+            <p>&copy; All rights reserved.</p>
+            <p>New Haven, CT </p>
+            <p>Phone: +123456789 | Email: info@hairsalon.com</p>
+        </div>
+    </footer>
+</body>
+</html>

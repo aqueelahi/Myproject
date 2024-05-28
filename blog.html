@@ -1,36 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="blog.css" rel="stylesheet" type="text/css" >
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="index.css" rel="stylesheet" type="text/css" >
+  <title>Blog - Natural Haven</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav>
-        <div>  
-          <ul class="Mainmenu">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="blog.html" alt="blog ">Blog</a></li>
-          <li><a href="forum.html">Forum</a></li> 
-          <li><a href="gallery">Gallery</a></li>
-          <li><a href="resources.html">Resources</a></li>
-          <li><a href="about us">About Us</a></li> 
-         </ul>
+    <header>
+        <div class="navbar">
+          <div class="logo">
+            <img src="logo.jpg" alt="Girl with locs" class="logopic">
+            <h1>Natural Haven &reg;</h1>
+          </div>
+          <nav>
+            <ul class="menu">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li class="dropdown">
+                <a href="resources.html" class="dropbtn">Resources</a>
+                <div class="dropdown-content">
+                  <a href="award.html">Award</a>
+                </div>
+              </li>
+              <li class="dropdown2">
+                <a href="us.html" class="dropbtn2">About Us</a>
+                <div class="dropdown-content2">
+                  <a href="donation.html">Donate</a>
+                </div>
+              </li>
+            </ul>
+          </nav>
         </div>
-      </nav>
+      </header>
+  <main> 
+    <section class="blog-page">
+      <aside class="about-me">
+        <h2>About Me</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec nisi eu libero dapibus ultricies eu vitae odio. Integer eget leo id dui dignissim tempus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+        <img src="about-me-image.jpg" alt="About Me Image">
+      </aside>
 
-<main> 
-    <article>
-     <h2>How often should you really wash your hair?</h2>
-     <p> This is my latest article on how often you should wash your hair.</p>
-    </article>
-</main>
+      <section class="blog-posts">
+        <article>
+          <h2>Sample Blog Post 1</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec nisi eu libero dapibus ultricies eu vitae odio. Integer eget leo id dui dignissim tempus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+          <a href="#">Read More</a>
+        </article>
+        <article>
+          <h2>Sample Blog Post 2</h2>
+          <p>Ut eget aliquet dui. Vivamus vel vehicula dui. Sed sollicitudin, purus nec tincidunt finibus, metus urna tincidunt mi, a tristique justo turpis vitae lacus. Integer ut dictum lectus.</p>
+          <a href="#">Read More</a>
+        </article>
+        <!-- More articles can be added here -->
+      </section>
+    </section>
+  </main>
 
-<footer>
-    <p>Author:Aqueelah Irshad<br>
-    <a href="aqueelahirshad@gmail.com">email</a>
-</footer>
+  <footer class="footer">
+    <div class="footer-links">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="award.html">Award</a></li>
+        <li><a href="us.html">About Us</a></li> 
+      </ul>
+    </div>
+    <div class="footer-social">
+      <ul>
+        <li><a href="https://www.instagram.com/yourprofile">Instagram</a></li>
+      </ul>
+    </div>
+    <div class="footer-info">
+      <p>&copy; All rights reserved.</p>
+      <p>New Haven, CT </p>
+      <p>Phone: +123456789 | Email: info@hairsalon.com</p>
+    </div>
+  </footer>
 
 </body>
 </html>
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="index.css" rel="stylesheet" type="text/css" >
+    <title>Document</title>
+</head>
+<body>
+
+    <header> 
+        <div class="navbar">
+          <div class="logo">
+            <img src="logo.jpg" alt="Girl with locs" class="logopic">
+            <h1>Natural Haven &reg;</h1>
+          </div>
+          <nav>
+            <ul class="menu">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropbtn">Resources</a>
+                <div class="dropdown-content">
+                  <a href="resources.html">Main Page</a>
+                  <a href="award.html">Award</a>
+                </div>
+              </li>
+              <li><a href="aboutus.html">About Us</a></li> 
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+<main> 
+    <section class="blog-page">
+        <aside class="about-me">
+            <h2>About Me</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec nisi eu libero dapibus ultricies eu vitae odio. Integer eget leo id dui dignissim tempus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+            <img src="about-me-image.jpg" alt="About Me Image">
+        </aside>
+    
+        <section class="blog-posts">
+            <article>
+                <h2>Sample Blog Post 1</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec nisi eu libero dapibus ultricies eu vitae odio. Integer eget leo id dui dignissim tempus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                <a href="#">Read More</a>
+            </article>
+            <article>
+                <h2>Sample Blog Post 2</h2>
+                <p>Ut eget aliquet dui. Vivamus vel vehicula dui. Sed sollicitudin, purus nec tincidunt finibus, metus urna tincidunt mi, a tristique justo turpis vitae lacus. Integer ut dictum lectus.</p>
+                <a href="#">Read More</a>
+            </article>
+             More articles can be added here
+        </section>
+    </section>
+    
+</main>
+
+<footer
+    <div class="footer">
+        <div class="footer-links">
+            <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <div class="resourcedropdown">
+            <li><a href="resources.html"<button class="dropbtn">Resources</a></li></button>
+              <div class="dropdown-content">
+                <a href="award.html">Award</a>
+              </div>
+            </div>
+            <li><a href="aboutus.html">About Us</a></li> 
+             </ul>
+        <div class="footer-social">
+            <ul>
+            <li><a href="https://www.instagram.com/yourprofile"><i class="none">Instagram</i></a></li>
+            </ul>
+        </div>
+    
+        <div class="footer-info">
+            <p>&copy; All rights reserved.</p>
+            <p>New Haven, CT </p>
+            <p>Phone: +123456789 | Email: info@hairsalon.com</p>
+        </div>
+</footer>
+
+</body>
+</html> -->

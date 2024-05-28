@@ -1,4 +1,5 @@
-let hairLength = 15; // Length of hair in centimeters
+<script
+let hairLength = {20 15; // Length of hair in centimeters
 let isHairClean = true; // Boolean indicating if hair is clean
 
 // Integrate distinct data types
@@ -30,3 +31,30 @@ if (isLongHair && isBrownHair) {
 // let outputElement = document.createElement('p');
 // outputElement.textContent = `Total hair length after ${numHaircuts} haircuts: ${totalHairLength} cm`;
 // document.body.appendChild(outputElement);
+
+document.addEventListener('DOMContentLoaded', function() {
+  var dropdowns = document.querySelectorAll('.dropdown');
+
+  dropdowns.forEach(function(dropdown) {
+    var button = dropdown.querySelector('.dropbtn');
+
+    button.addEventListener('click', function(event) {
+      event.preventDefault();
+      var content = dropdown.querySelector('.dropdown-content');
+      content.classList.toggle('show');
+    });
+  });
+
+  // Close the dropdown if the user clicks outside of it
+  window.addEventListener('click', function(event) {
+    if (!event.target.matches('.dropbtn')) {
+      var dropdownContents = document.querySelectorAll('.dropdown-content');
+      dropdownContents.forEach(function(content) {
+        if (content.classList.contains('show')) {
+          content.classList.remove('show');
+        }
+      });
+    }
+  });
+});
+script

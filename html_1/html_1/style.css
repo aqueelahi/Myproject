@@ -1,0 +1,47 @@
+
+.logopic {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+
+.h1 {
+  padding: 25px
+}
+
+.header {
+  background-color: rgb(203, 70, 233);
+  display: flex;
+}
+
+.NaturalHaven {
+  display: flex;
+}
+
+.Mainmenu {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+  width: 100%; 
+ 
+}
+.body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.Mainpic {
+  background-image: url("home.jpg");
+  height: 70vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  width: 800px;
+  height: 800px;
+}
+
+
+
+

@@ -1,75 +1,302 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>replit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Natural Haven</title>
   <link href="index.css" rel="stylesheet" type="text/css" />
-  <title>Javascript Demo</title>
-  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+  <!-- Firebase Initialization -->
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-app.js";
+    import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, deleteDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-firestore.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-auth.js";
+    import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-storage.js";
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyARAzSIF5ZSSUTtHeYh2Pas7Mp6SaQxOjQ",
+      authDomain: "natural-haven-ec069.firebaseapp.com",
+      projectId: "natural-haven-ec069",
+      storageBucket: "natural-haven-ec069.appspot.com",
+      messagingSenderId: "216759740779",
+      appId: "1:216759740779:web:34c4c9df4d96cdb691842e"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const auth = getAuth(app);
+    const storage = getStorage(app);
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Sign Up
+      document.getElementById('signup-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = document.getElementById('signup-email').value;
+        const password = document.getElementById('signup-password').value;
+
+        createUserWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            console.log('User signed up:', userCredential.user);
+            alert('User signed up successfully!');
+          })
+          .catch((error) => {
+            console.error('Error signing up:', error.message);
+            alert('Error signing up: ' + error.message);
+          });
+      });
+
+      // Login
+      document.getElementById('login-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = document.getElementById('login-email').value;
+        const password = document.getElementById('login-password').value;
+
+        signInWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            console.log('User logged in:', userCredential.user);
+            alert('User logged in successfully!');
+          })
+          .catch((error) => {
+            console.error('Error logging in:', error.message);
+            alert('Error logging in: ' + error.message);
+          });
+      });
+
+      // Auth State Change
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          console.log('User is logged in:', user);
+          document.getElementById('user-status').textContent = `Logged in as: ${user.email}`;
+        } else {
+          console.log('No user is logged in');
+          document.getElementById('user-status').textContent = 'Not logged in';
+        }
+      });
+
+      // Sign Out
+      document.getElementById('signout').addEventListener('click', () => {
+        signOut(auth).then(() => {
+          console.log('User signed out');
+          alert('User signed out successfully!');
+        }).catch((error) => {
+          console.error('Error signing out:', error.message);
+        });
+      });
+
+      // Form Submission
+      document.querySelector('.application-form').addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        // Get form values
+        const fullName = document.getElementById('full_name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const address = document.getElementById('address').value;
+        const school = document.getElementById('school').value;
+        const degree = document.getElementById('degree').value;
+        const essay = document.getElementById('essay').value;
+        const mediaFile = document.getElementById('media').files[0];
+
+        let mediaURL = '';
+
+        // Upload media file to Firebase Storage
+        if (mediaFile) {
+          const storageRef = ref(storage, 'media/' + mediaFile.name);
+          const snapshot = await uploadBytes(storageRef, mediaFile);
+          mediaURL = await getDownloadURL(snapshot.ref);
+        }
+
+        try {
+          // Add a new document in collection "applications"
+          const docRef = await addDoc(collection(db, "applications"), {
+            full_name: fullName,
+            email: email,
+            phone: phone,
+            address: address,
+            school: school,
+            degree: degree,
+            essay: essay,
+            media_url: mediaURL,
+            timestamp: serverTimestamp()
+          });
+          alert("Application submitted successfully! Document ID: " + docRef.id);
+          document.querySelector('.application-form').reset();
+        } catch (error) {
+          console.error("Error adding document: ", error);
+        }
+      });
+
+      // Example of Read Operation
+      async function readApplications() {
+        const querySnapshot = await getDocs(collection(db, "applications"));
+        querySnapshot.forEach((doc) => {
+          console.log(`${doc.id} => ${doc.data()}`);
+        });
+      }
+      readApplications();
+
+      // Example of Update Operation
+      async function updateApplication(docId, updatedData) {
+        const docRef = doc(db, "applications", docId);
+        await updateDoc(docRef, updatedData);
+        console.log("Document updated:", docId);
+      }
+      // Call updateApplication with appropriate docId and updatedData
+
+      // Example of Delete Operation
+      async function deleteApplication(docId) {
+        await deleteDoc(doc(db, "applications", docId));
+        console.log("Document deleted:", docId);
+      }
+      // Call deleteApplication with appropriate docId
+    });
+  </script>
 </head>
-  
+
 <body>
-  <header> 
-
-    <div class="NaturalHaven"> 
-       <img src="logo.jpg" alt="Girl with locs" class="logopic">
-       <h1>Natural Haven</h1>
-    </div>
-
-
-    <nav>
-      <div>  
-        <ul class="Mainmenu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <div class="resourcedropdown">
-            <li><a href="resources.html"<button class="dropbtn">Resources</a></li></button>
-              <div class="dropdown-content">
-                <a href="award.html">Award</a>
-              </div>
-            </div>
-        <li><a href="aboutus.html">About Us</a></li> 
-       </ul>
+  <header>
+    <div class="navbar">
+      <div class="logo">
+        <img src="logo.jpg" alt="Girl with locs" class="logopic">
+        <h1>Natural Haven &reg;</h1>
       </div>
-    </nav>
+      <nav>
+        <ul class="menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li class="dropdown">
+            <a href="resources.html" class="dropbtn">Resources</a>
+            <div class="dropdown-content">
+              <a href="award.html">Award</a>
+            </div>
+          </li>
+          <li class="dropdown2">
+            <a href="us.html" class="dropbtn2">About Us</a>
+            <div class="dropdown-content2">
+              <a href="donation.html">Donate</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-<div class="scholarship">
+  <div class="authentication">
+    <h2>Sign Up</h2>
+    <form id="signup-form">
+      <input type="email" id="signup-email" placeholder="Email" required>
+      <input type="password" id="signup-password" placeholder="Password" required>
+      <button type="submit">Sign Up</button>
+    </form>
 
-  <div class="Natural Haven Award">
+    <h2>Login</h2>
+    <form id="login-form">
+      <input type="email" id="login-email" placeholder="Email" required>
+      <input type="password" id="login-password" placeholder="Password" required>
+      <button type="submit">Login</button>
+    </form>
 
-    <div class="awardmain"
-    <h1>Natural Haven Hair Award</h1>
-    </div>
+    <div id="user-status">Not logged in</div>
+    <button id="signout">Sign Out</button>
+  </div>
 
-    <div class="award">
-    <img class="awardimage"src="gradhair.jpeg">
-    </div>
+  <div class="scholarship">
+    <div class="Natural Haven Award">
+      <div class="awardmain">
+        <h1>Natural Haven Hair Award</h1>
+      </div>
 
-    <div class="awardgoal">
-    <h2>Award Goal</h2>
-    <p>This scholarship aims to assist a deserving student financially as they pursue a career in hairdressing, styling, or cosmetology.</p>
-    <</div>
+      <div class="award">
+        <img class="awardimage" src="gradhair.jpeg" alt="Graduation Hair Award">
+      </div>
 
-    <div class="awardeligibility">
-    <h2>Eligibility</h2>
-    <p>Are you passionate about hair? Do you dream of a career in hairdressing, styling, or becoming a technician?</p>
-    <p>We are offering a $500 scholarship award to one talented and dedicated student looking to pursue their dreams and create equity in the world of hair care!</p>
-    <ul>
-      <li>Applicant must be enrolled in or accepted into a licensed cosmetology program at an accredited institution.</li>
-      <li>Minimum GPA requirement- 2.0 on a 4.0 scale.</li> 
-      <li>Submit a portfolio including hairstyles you've created(preferred but optional)</li>
-      <li>Write a short essay (300-500 words) on one of the following topics:
+      <div class="awardgoal">
+        <h2>Award Goal</h2>
+        <p>This scholarship aims to assist a deserving student financially as they pursue a career in hairdressing, styling, or cosmetology.</p>
+      </div>
+
+      <div class="awardeligibility">
+        <h2>Eligibility</h2>
+        <p>Are you passionate about hair? Do you dream of a career in hairdressing, styling, or becoming a technician?</p>
+        <p>We are offering a $500 scholarship award to one talented and dedicated student looking to pursue their dreams and create equity in the world of hair care!</p>
         <ul>
-        <li>Why are you interested in pursuing a career in hairdressing, styling, or cosmetology?</li>
-        <li>Describe a creative hairstyle you would love to create and the inspiration behind it.</li>
-        <li>How do you envision using your skills to make a positive impact in the hair industry?</li>
+          <li>Applicant must be enrolled in or accepted into a licensed cosmetology program at an accredited institution.</li>
+          <li>Minimum GPA requirement - 2.0 on a 4.0 scale.</li>
+          <li>Submit a portfolio including hairstyles you've created (preferred but optional).</li>
+          <li>Write a short essay (300-500 words) on one of the following topics:
+            <ul>
+              <li>Why are you interested in pursuing a career in hairdressing, styling, or cosmetology?</li>
+              <li>Describe a creative hairstyle you would love to create and the inspiration behind it.</li>
+              <li>How do you envision using your skills to make a positive impact in the hair industry?</li>
+            </ul>
+          </li>
         </ul>
-      </li>
-    </ul>
+      </div>
+
+      <!-- Scholarship Application Form -->
+      <div class="application-form-section">
+        <h3>Application Form</h3>
+        <form class="application-form">
+          <div class="form-group">
+            <label for="full_name">Full Name</label>
+            <input type="text" id="full_name" name="full_name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" required>
+          </div>
+          <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text" id="address" name="address" required>
+          </div>
+          <div class="form-group">
+            <label for="school">Current School/College</label>
+            <input type="text" id="school" name="school" required>
+          </div>
+          <div class="form-group">
+            <label for="degree">Degree/Program of Study</label>
+            <input type="text" id="degree" name="degree" required>
+          </div>
+          <div class="form-group">
+            <label for="essay">Personal Statement/Essay</label>
+            <textarea id="essay" name="essay" rows="5" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="media">Portfolio (optional)</label>
+            <input type="file" id="media" name="media" accept="image/*,video/*">
+          </div>
+          <div class="form-group">
+            <button type="submit" class="submit-button">Submit Application</button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
-</div>
+
+  <footer class="footer">
+    <div class="footer-links">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="award.html">Scholarship</a></li>
+      </ul>
+    </div>
+    <div class="footer-info">
+      <p>&copy; 2024 Natural Haven. All rights reserved.</p>
+      <p>New Haven, CT | Phone: +123456789 | Email: info@naturalhaven.com</p>
+    </div>
+  </footer>
 </body>
+
+</html>
